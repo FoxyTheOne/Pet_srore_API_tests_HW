@@ -1,0 +1,25 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.mycompany'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    // rest-assured для тестирования API
+    testImplementation 'io.rest-assured:rest-assured:5.5.1'
+
+    testImplementation 'com.fasterxml.jackson.core:jackson-databind:2.19.0'
+
+    testImplementation 'io.qameta.allure:allure-rest-assured:2.29.1'
+}
+
+test {
+    useJUnitPlatform()
+}

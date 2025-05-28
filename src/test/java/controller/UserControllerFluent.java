@@ -2,17 +2,18 @@ package controller;
 
 import io.qameta.allure.Step;
 import io.qameta.allure.restassured.AllureRestAssured;
-import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import models.User;
+import models.UserApiHttpResponse;
+import models.UserWithBuilder;
 
 import static constants.CommonConstants.BASE_URL;
 import static io.restassured.RestAssured.given;
 
-public class UserController {
+public class UserControllerFluent {
     RequestSpecification requestSpecification = given();
 
-    public UserController() {
+    // Конструктор
+    public UserControllerFluent() {
         // Повторяющиеся шаги:
         // given()
         // .baseUri("https://petstore.swagger.io")
@@ -25,27 +26,27 @@ public class UserController {
     }
 
     @Step("Create user")
-    public Response createUser(User user) {
+    public UserApiHttpResponse createUser(UserWithBuilder user) {
         // .when()
         // .body(body)
         requestSpecification.body(user);
         // .post("/v2/user")
-        return given(requestSpecification).when().post("/v2/user");
+        return new UserApiHttpResponse(given(requestSpecification).when().post("/v2/user").then());
     }
 
     @Step("Get user by username")
-    public User getUserByUsername(String username) {
-        return given(requestSpecification).when().get("/v2/user/" + username).as(User.class);
+    public UserApiHttpResponse getUserByUsername(String username) {
+        return new UserApiHttpResponse(given(requestSpecification).when().get("/v2/user/" + username).then());
     }
 
     @Step("Update user")
-    public Response updateUser(User user, String username) {
+    public UserApiHttpResponse updateUser(UserWithBuilder user, String username) {
         requestSpecification.body(user);
-        return given(requestSpecification).log().all().when().put("/v2/user/" + username);
+        return new UserApiHttpResponse(given(requestSpecification).log().all().when().put("/v2/user/" + username).then());
     }
 
-    @Step("Delete user")
-    public Response deleteUser(String username) {
-        return given(requestSpecification).log().all().when().delete("/v2/user/" + username);
+    @Step("Delete user by name")
+    public UserApiHttpResponse deleteUserByName(String username) {
+        return new UserApiHttpResponse(given(requestSpecification).log().all().when().delete("/v2/user/" + username).then());
     }
 }

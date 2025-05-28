@@ -1,3 +1,5 @@
+package apiTests;
+
 import controller.UserController;
 import io.restassured.response.Response;
 import models.User;
@@ -17,7 +19,7 @@ class UserTests {
         UserController userController = new UserController();
 
         // .when().body(body).post("/v2/user")
-        Response response = userController.createUser(DEFAULT_USER);
+        Response response = userController.createUser(DEFAULT_STRING_USER);
 
         int actualCode = response.getStatusCode();
 
@@ -30,7 +32,7 @@ class UserTests {
         UserController userController = new UserController();
 
         // .when().body(body).post("/v2/user")
-        Response response = userController.createUser(DEFAULT_USER);
+        Response response = userController.createUser(DEFAULT_STRING_USER);
 
         // Парсинг
         UserApiResponse user = response.as(UserApiResponse.class);
@@ -78,10 +80,10 @@ class UserTests {
         UserController userController = new UserController();
 
         // .when().get("/v2/user/" + username)
-        Response response = userController.getUserByUsername("string");
+        User user = userController.getUserByUsername("string");
 
-        assertEquals(200, response.getStatusCode());
-        User user = response.as(User.class);
+//        assertEquals(200, response.getStatusCode());
+//        User user = response.as(User.class);
         assertTrue(user.getId() > 9223372036854764397L);
         assertEquals(expectedUser, user);
     }
@@ -92,7 +94,7 @@ class UserTests {
         UserController userController = new UserController();
 
         // .when()
-        Response response = userController.updateUser(STRING2_USER, USERNAME_STRING2);
+        Response response = userController.updateUser(STRING2_USER, STRING2_USER.getUsername());
 
         // response.then().statusCode(200).
         assertEquals(200, response.getStatusCode());
@@ -108,11 +110,11 @@ class UserTests {
         UserController userController = new UserController();
 
         // .when()
-        Response response = userController.deleteUser(USERNAME_STRING);
+        Response response = userController.deleteUser(STRING2_USER.getUsername());
 
         UserApiResponse user = response.as(UserApiResponse.class);
         assertEquals(200, user.getCode());
         assertEquals("unknown", user.getType());
-        assertEquals(USERNAME_STRING, user.getMessage());
+        assertEquals(STRING2_USER.getUsername(), user.getMessage());
     }
 }

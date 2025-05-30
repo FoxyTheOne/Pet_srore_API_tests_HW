@@ -1,9 +1,9 @@
 package constants;
 
-import models.User;
-import models.UserWithBuilder;
+import models.hw14.User;
+import models.hw15_fluent.UserWithBuilder;
 
-public class CommonConstants {
+public class PetStoreConstants {
     public static final String BASE_URL = "https://petstore.swagger.io";
 
     public static final User DEFAULT_STRING_USER = new User(0, "string", "string","string","string","string","string", 0);

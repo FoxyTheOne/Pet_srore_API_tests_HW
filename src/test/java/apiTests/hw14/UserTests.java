@@ -1,13 +1,13 @@
-package apiTests;
+package apiTests.hw14;
 
 import controller.UserController;
 import io.restassured.response.Response;
-import models.User;
-import models.UserApiResponse;
+import models.hw14.User;
+import models.hw14.UserApiResponse;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 
-import static constants.CommonConstants.*;
+import static constants.PetStoreConstants.*;
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;

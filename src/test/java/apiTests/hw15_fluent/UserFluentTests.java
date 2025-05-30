@@ -1,11 +1,11 @@
-package apiTests;
+package apiTests.hw15_fluent;
 
-import models.UserApiHttpResponse;
+import models.hw15_fluent.ApiHttpResponse;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-import static constants.CommonConstants.*;
+import static constants.PetStoreConstants.*;
 
 class UserFluentTests extends BaseUserFluentTests {
 
@@ -13,36 +13,57 @@ class UserFluentTests extends BaseUserFluentTests {
     // В Before и AfterEach мы удаляем дефолтного user, поэтому сделаем первым тест, который добавляет его и проверяет его статус код
     @Test
     @Tag("smoke")
-    @DisplayName("Check that create user returns ok status 200")
+    @DisplayName("Check that create new user returns ok status 200")
     void simpleCreateUserTest() {
         // .when().body(body).post("/v2/user")
-        UserApiHttpResponse response = userControllerFluent.createUser(DEFAULT_STRING_USER_BUILDER);
+        ApiHttpResponse response = userControllerFluent.createUser(DEFAULT_STRING_USER_BUILDER);
 
         response.statusCodeIs(200);
     }
 
     // В нашем случае метод POST на сайте добавляет user сколько угодно раз, поэтому мы можем POST такого же user ещё раз
+    // А в конкретно нашей реализации дефолтный user удаляется после каждого теста, поэтому его так же можно создавать сколько угодно раз
     @Test
     @Tag("smoke")
-    @DisplayName("Check that create user returns ok status 200 and fields are not null")
+    @DisplayName("Check that create new user returns ok status 200 and fields are not null")
     void createUserTest() {
         // .when().body(body).post("/v2/user")
-        UserApiHttpResponse response = userControllerFluent.createUser(DEFAULT_STRING_USER_BUILDER);
+        ApiHttpResponse response = userControllerFluent.createUser(DEFAULT_STRING_USER_BUILDER);
 
 
         // Проверка Response body
         String messageValue = response
                 .statusCodeIs(200)
                 .jsonValueIsNotNull("message")
-                .jsonStringValueIs("type", "unknown")
+                .jsonValueIs("type", "unknown")
                 .getJsonValueAndCheckIsNotNull("message");
     }
+
+    // В нашем случае метод POST на сайте добавляет user сколько угодно раз, поэтому мы можем POST такого же user ещё раз
+    // А в конкретно нашей реализации дефолтный user удаляется после каждого теста, поэтому его так же можно создавать сколько угодно раз
+    @Test
+    @Tag("with retry")
+    @DisplayName("Check with retry that create new user returns ok status 200 and fields are not null")
+    void createUserWithRetryTest() throws InterruptedException {
+        // .when().body(body).post("/v2/user")
+        ApiHttpResponse response = userControllerFluent.createUserWithRetry(DEFAULT_STRING_USER_BUILDER);
+
+        // Проверка Response body
+        String messageValue = response
+                .statusCodeIs(200)
+                .jsonValueIsNotNull("message")
+                .jsonValueIs("type", "unknown")
+                .getJsonValueAndCheckIsNotNull("message");
+    }
+
+    // TODO тестовые данные со всеми полями и тестовые данные с минимальным набором полей
+    // TODO блок обычных тестов и блок с ретраями
 
     @Test
     @Tag("smoke")
     @DisplayName("Check that get user by username returns ok status 200, fields are not null and username is equal")
     void getUserByUsernameTest() {
-        UserApiHttpResponse user = userControllerFluent.getUserByUsername(DEFAULT_STRING_USER_BUILDER.getUsername());
+        ApiHttpResponse user = userControllerFluent.getUserByUsername(DEFAULT_STRING_USER_BUILDER.getUsername());
 
         user
                 .statusCodeIs(200)
@@ -54,34 +75,34 @@ class UserFluentTests extends BaseUserFluentTests {
                 .jsonValueIsNotNull("password")
                 .jsonValueIsNotNull("phone")
                 .jsonValueIsNotNull("userStatus")
-                .jsonStringValueIs("username", DEFAULT_STRING_USER_BUILDER.getUsername());
+                .jsonValueIs("username", DEFAULT_STRING_USER_BUILDER.getUsername());
     }
 
     @Test
     @Tag("smoke")
     @DisplayName("Check that update user returns ok status 200 and fields are not null")
     void updateUserTest() {
-        UserApiHttpResponse response = userControllerFluent.updateUser(STRING2_USER_BUILDER, STRING2_USER_BUILDER.getUsername());
+        ApiHttpResponse response = userControllerFluent.updateUser(STRING2_USER_BUILDER, STRING2_USER_BUILDER.getUsername());
 
         response
                 .statusCodeIs(200)
                 .jsonValueIsNotNull("type")
                 .jsonValueIsNotNull("message")
-                .jsonStringValueIs("type", "unknown");
+                .jsonValueIs("type", "unknown");
     }
 
     @Test
     @Tag("smoke")
     @DisplayName("Check that delete user returns ok status 200, fields are not null and message is equal to username")
     void deleteUserTest() {
-        UserApiHttpResponse response = userControllerFluent.deleteUserByName(DEFAULT_STRING_USER_BUILDER.getUsername());
+        ApiHttpResponse response = userControllerFluent.deleteUserByName(DEFAULT_STRING_USER_BUILDER.getUsername());
 
         response
                 .statusCodeIs(200)
                 .jsonValueIsNotNull("type")
                 .jsonValueIsNotNull("message")
-                .jsonStringValueIs("type", "unknown")
-                .jsonStringValueIs("message", DEFAULT_STRING_USER_BUILDER.getUsername());
+                .jsonValueIs("type", "unknown")
+                .jsonValueIs("message", DEFAULT_STRING_USER_BUILDER.getUsername());
     }
 
 
@@ -99,19 +120,19 @@ class UserFluentTests extends BaseUserFluentTests {
                 .statusCodeIs(200)
                 .jsonValueIsNotNull("id")
                 .jsonValueIsNotNull("username")
-                .jsonStringValueIs("username", DEFAULT_STRING_USER.getUsername())
+                .jsonValueIs("username", DEFAULT_STRING_USER.getUsername())
                 .jsonValueIsNotNull("firstName")
-                .jsonStringValueIs("firstName", DEFAULT_STRING_USER.getFirstName())
+                .jsonValueIs("firstName", DEFAULT_STRING_USER.getFirstName())
                 .jsonValueIsNotNull("lastName")
-                .jsonStringValueIs("lastName", DEFAULT_STRING_USER.getLastName())
+                .jsonValueIs("lastName", DEFAULT_STRING_USER.getLastName())
                 .jsonValueIsNotNull("email")
-                .jsonStringValueIs("email", DEFAULT_STRING_USER.getEmail())
+                .jsonValueIs("email", DEFAULT_STRING_USER.getEmail())
                 .jsonValueIsNotNull("password")
-                .jsonStringValueIs("password", DEFAULT_STRING_USER.getPassword())
+                .jsonValueIs("password", DEFAULT_STRING_USER.getPassword())
                 .jsonValueIsNotNull("phone")
-                .jsonStringValueIs("phone", DEFAULT_STRING_USER.getPhone())
+                .jsonValueIs("phone", DEFAULT_STRING_USER.getPhone())
                 .jsonValueIsNotNull("userStatus")
-                .jsonLongValueIs("userStatus", DEFAULT_STRING_USER.getUserStatus());
+                .jsonValueIs("userStatus", DEFAULT_STRING_USER.getUserStatus());
     }
 }
 

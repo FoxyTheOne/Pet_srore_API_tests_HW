@@ -4,9 +4,9 @@ import io.qameta.allure.Step;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import models.User;
+import models.hw14.User;
 
-import static constants.CommonConstants.BASE_URL;
+import static constants.PetStoreConstants.BASE_URL;
 import static io.restassured.RestAssured.given;
 
 public class UserController {

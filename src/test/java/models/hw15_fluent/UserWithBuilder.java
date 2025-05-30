@@ -1,4 +1,4 @@
-package models;
+package models.hw15_fluent;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

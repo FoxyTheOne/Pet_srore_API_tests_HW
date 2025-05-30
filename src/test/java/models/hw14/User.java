@@ -1,4 +1,4 @@
-package models;
+package models.hw14;
 
 import java.util.Objects;
 

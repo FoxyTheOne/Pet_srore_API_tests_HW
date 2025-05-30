@@ -1,0 +1,21 @@
+package models.hw15_fluent;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import models.Gender;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+public class SuperheroWithBuilder {
+    private String birthDate;
+    private String city;
+    private String fullName;
+    private Gender gender;
+    private Integer id;
+    private String mainSkill;
+    private String phone;
+}

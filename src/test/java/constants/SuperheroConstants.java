@@ -1,19 +1,19 @@
 package constants;
 
-import models.Gender;
+import models.hw15_fluent.Gender;
 import models.hw15_fluent.SuperheroWithBuilder;
 
 public class SuperheroConstants {
     public static final String BASE_URL = "https://superhero.qa-test.csssr.com/";
 
     public static final SuperheroWithBuilder DEFAULT_SUPERMAN_SUPERHERO = SuperheroWithBuilder.builder()
-            .birthDate("1938-06-01")
-            .city("Krypton")
-            .fullName("Superman")
+            .birthDate("1980-05-30")
+            .city("New York")
+            .fullName("Daredevil")
             .gender(Gender.M)
             .id(160)
-            .mainSkill("Flight")
-            .phone("+7777777777")
+            .mainSkill("Agility")
+            .phone("+9999999999")
             .build();
 
     public static final SuperheroWithBuilder BAD_REQUEST_400_SUPERHERO = SuperheroWithBuilder.builder()

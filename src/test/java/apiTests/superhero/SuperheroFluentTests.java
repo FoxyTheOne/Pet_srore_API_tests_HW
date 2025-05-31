@@ -1,4 +1,4 @@
-package apiTests.hw15_fluent;
+package apiTests.superhero;
 
 import models.hw15_fluent.SuperheroWithBuilder;
 import org.junit.jupiter.api.DisplayName;
@@ -11,7 +11,7 @@ class SuperheroFluentTests extends BaseSuperheroFluentTests {
     // CREATE
     @Test
     @Tag("smoke")
-    @DisplayName("Create a new superhero and check status 200 ok")
+    @DisplayName("Create a new superhero with ALL fields and check status 200 ok")
     void addNewSuperheroTest() {
         int id = Integer.parseInt(superheroControllerFluent.createSuperhero(DEFAULT_SUPERMAN_SUPERHERO)
                 .statusCodeIs(200)
@@ -21,7 +21,7 @@ class SuperheroFluentTests extends BaseSuperheroFluentTests {
 
     @Test
     @Tag("smoke")
-    @DisplayName("Create a new superhero with wrong data and check status 400 bad request")
+    @DisplayName("Create a new superhero with WRONG data and check status 400 bad request")
     void addNewBrokenSuperheroTest() {
         superheroControllerFluent.createSuperhero(BAD_REQUEST_400_SUPERHERO)
                 .statusCodeIs(400)
@@ -31,7 +31,7 @@ class SuperheroFluentTests extends BaseSuperheroFluentTests {
 
     @Test
     @Tag("smoke")
-    @DisplayName("Create empty superhero and check status 403")
+    @DisplayName("Create EMPTY superhero and check status 403")
     void addEmptySuperheroTest() {
         superheroControllerFluent.createSuperhero(SuperheroWithBuilder.builder().build())
                 .statusCodeIs(403)
@@ -41,7 +41,7 @@ class SuperheroFluentTests extends BaseSuperheroFluentTests {
 
     @Test
     @Tag("smoke")
-    @DisplayName("Create superhero without data and check status 403")
+    @DisplayName("Create superhero with ONLY name and check status 403")
     void addSuperheroWithoutDataTest() {
         superheroControllerFluent.createSuperhero(EMPTY_SUPERMAN_SUPERHERO)
                 .statusCodeIs(403)
@@ -51,7 +51,7 @@ class SuperheroFluentTests extends BaseSuperheroFluentTests {
 
     @Test
     @Tag("smoke")
-    @DisplayName("Create a new superhero with minimum fields and check status 200 ok")
+    @DisplayName("Create a new superhero with MINIMUM fields and check status 200 ok")
     void addNotFullSuperheroTest() {
         int id = Integer.parseInt(superheroControllerFluent.createSuperhero(MINIMUM_SUPERMAN_SUPERHERO)
                 .statusCodeIs(200)
@@ -83,6 +83,7 @@ class SuperheroFluentTests extends BaseSuperheroFluentTests {
                 .statusCodeIs(200);
     }
 
+    // Телефон не сохраняется. Возвращается (не всегда) нужный, сохраненный ранее объект, но поле "phone" всегда null
     @Test
     @Tag("smoke")
     @DisplayName("Get superhero by id, check status code and response body")
@@ -125,6 +126,7 @@ class SuperheroFluentTests extends BaseSuperheroFluentTests {
                 .statusCodeIs(200);
     }
 
+    // Телефон не сохраняется. Возвращается (не всегда) нужный, сохраненный ранее объект, но поле "phone" всегда null
     @Test
     @Tag("with retry")
     @DisplayName("Get superhero with retry by id, check status code and response body")
@@ -148,6 +150,7 @@ class SuperheroFluentTests extends BaseSuperheroFluentTests {
     }
 
     // UPDATE
+    // Не стабильный тест, работает не всегда
     @Test
     @Tag("with retry")
     @DisplayName("Update superhero by id")

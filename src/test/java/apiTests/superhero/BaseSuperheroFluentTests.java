@@ -1,4 +1,4 @@
-package apiTests.hw15_fluent;
+package apiTests.superhero;
 
 import controller.SuperheroControllerFluent;
 import org.junit.jupiter.api.AfterEach;

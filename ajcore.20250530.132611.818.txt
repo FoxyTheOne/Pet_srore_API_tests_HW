@@ -1,0 +1,129 @@
+---- AspectJ Properties ---
+AspectJ Compiler 1.9.22.1 built on Friday May 10, 2024 at 23:23:16 PDT
+---- Dump Properties ---
+Dump file: ajcore.20250530.132611.818.txt
+Dump reason: org.aspectj.weaver.BCException
+Dump on exception: true
+Dump at exit condition: abort
+---- Exception Information ---
+org.aspectj.weaver.BCException: Error processing class file
+when weaving type controller.UserControllerFluent
+when weaving classes 
+when weaving 
+
+	at org.aspectj.weaver.bcel.LazyClassGen.getJavaClassBytesIncludingReweavable(LazyClassGen.java:769)
+	at org.aspectj.weaver.bcel.BcelWeaver.getClassFilesFor(BcelWeaver.java:1456)
+	at org.aspectj.weaver.bcel.BcelWeaver.weaveAndNotify(BcelWeaver.java:1418)
+	at org.aspectj.weaver.bcel.BcelWeaver.weave(BcelWeaver.java:1189)
+	at org.aspectj.weaver.tools.WeavingAdaptor.getWovenBytes(WeavingAdaptor.java:574)
+	at org.aspectj.weaver.tools.WeavingAdaptor.weaveClass(WeavingAdaptor.java:398)
+	at org.aspectj.weaver.loadtime.Aj.preProcess(Aj.java:122)
+	at org.aspectj.weaver.loadtime.ClassPreProcessorAgentAdapter.transform(ClassPreProcessorAgentAdapter.java:51)
+	at java.instrument/java.lang.instrument.ClassFileTransformer.transform(ClassFileTransformer.java:242)
+	at java.instrument/sun.instrument.TransformerManager.transform(TransformerManager.java:188)
+	at java.instrument/sun.instrument.InstrumentationImpl.transform(InstrumentationImpl.java:610)
+	at java.base/java.lang.ClassLoader.defineClass1(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1026)
+	at java.base/java.security.SecureClassLoader.defineClass(SecureClassLoader.java:150)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.defineClass(BuiltinClassLoader.java:862)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.findClassOnClassPathOrNull(BuiltinClassLoader.java:760)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClassOrNull(BuiltinClassLoader.java:681)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:639)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:528)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:578)
+	at java.base/java.lang.Class.forName(Class.java:557)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor.loadClass(JUnitPlatformTestClassProcessor.java:173)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor.access$100(JUnitPlatformTestClassProcessor.java:62)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.execute(JUnitPlatformTestClassProcessor.java:109)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.execute(JUnitPlatformTestClassProcessor.java:99)
+	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:54)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:53)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:92)
+	at jdk.proxy1/jdk.proxy1.$Proxy4.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker$2.run(TestWorker.java:183)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:132)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:103)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:63)
+	at org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56)
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:121)
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:71)
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
+Caused by: java.lang.IllegalArgumentException: Unsupported class file major version 67
+	at aj.org.objectweb.asm.ClassReader.<init>(ClassReader.java:200)
+	at aj.org.objectweb.asm.ClassReader.<init>(ClassReader.java:180)
+	at aj.org.objectweb.asm.ClassReader.<init>(ClassReader.java:166)
+	at org.aspectj.weaver.bcel.asm.StackMapAdder.addStackMaps(StackMapAdder.java:42)
+	at org.aspectj.weaver.bcel.LazyClassGen.getJavaClassBytesIncludingReweavable(LazyClassGen.java:771)
+	... 44 more
+---- System Properties ---
+java.specification.version=23
+sun.cpu.isalist=amd64
+sun.jnu.encoding=Cp1251
+org.gradle.test.worker=2
+java.class.path=C:\\Users\\User\\.gradle\\caches\\8.10\\workerMain\\gradle-worker.jar;C:\\javaProjects\\autoTests\\014-015_Testing_API_Java_RestAssured\\petSroreApiTestsHW\\build\\classes\\java\\test;C:\\javaProjects\\autoTests\\014-015_Testing_API_Java_RestAssured\\petSroreApiTestsHW\\build\\classes\\java\\main;C:\\Users\\User\\.gradle\\caches\\modules-2\\files-2.1\\org.assertj\\assertj-core\\3.27.3\\31f5d58a202bd5df4993fb10fa2cffd610c20d6f\\assertj-core-3.27.3.jar;C:\\Users\\User\\.gradle\\caches\\modules-2\\files-2.1\\org.junit.jupiter\\junit-jupiter-params\\5.10.3\\4852f4e4af9074d9214213b199751f99efeab8b9\\junit-jupiter-params-5.10.3.jar;C:\\Users\\User\\.gradle\\caches\\modules-2\\files-2.1\\org.junit.jupiter\\junit-jupiter-engine\\5.10.3\\48c14e866bb1a87ca35d24ff068463bb202ada24\\junit-jupiter-engine-5.10.3.jar;C:\\Users\\User\\.gradle\\caches\\modules-2\\files-2.1\\io.qameta.allure\\allure-junit-platform\\2.29.1\\9a459c871098e583de0085b3ef077c2c7d5e50bf\\allure-junit-platform-2.29.1.jar;C:\\Users\\User\\.gradle\\caches\\modules-2\\files-2.1\\org.junit.platform\\junit-platform-launcher\\1.10.3\\2e07e6389624f3e93fb2e87aec2fdc30cc84b069\\junit-platform-launcher-1.10.3.jar;C:\\Users\\User\\.gradle\\caches\\modules-2\\files-2.1\\org.junit.platform\\junit-platform-engine\\1.10.3\\365a320c3cfd47f3346625e541e424e35dc75c42\\junit-platform-engine-1.10.3.jar;C:\\Users\\User\\.gradle\\caches\\modules-2\\files-2.1\\org.junit.platform\\junit-platform-commons\\1.10.3\\a353d42a2f13343a7cb80c5228ae66ff64495481\\junit-platform-commons-1.10.3.jar;C:\\Users\\User\\.gradle\\caches\\modules-2\\files-2.1\\org.junit.jupiter\\junit-jupiter\\5.10.3\\6686d8fbf251f9bf8ecba413cab57b9e00f9134d\\junit-jupiter-5.10.3.jar;C:\\Users\\User\\.gradle\\caches\\modules-2\\files-2.1\\org.junit.jupiter\\junit-jupiter-api\\5.10.3\\a22aa91d1d6c69b2020a9aeb6d095ea81132bfa5\\junit-jupiter-api-5.10.3.jar;C:\\Users\\User\\.gradle\\caches\\modules-2\\files-2.1\\io.qameta.allure\\allure-junit5\\2.29.1\\4d1c4b89009eb6d035e4ecc8c1a85a3e196dbfa2\\allure-junit5-2.29.1.jar;C:\\Users\\User\\.gradle\\caches\\modules-2\\files-2.1\\io.rest-assured\\rest-assured\\5.5.1\\a386eafb980fd30bb673e5e0b25d3abb48184eb\\rest-assured-5.5.1.jar;C:\\Users\\User\\.gradle\\caches\\modules-2\\files-2.1\\com.fasterxml.jackson.core\\jackson-annotations\\2.19.0\\fd1e7c56de1e5b658563c8c66d5074cceb4e3a0b\\jackson-annotations-2.19.0.jar;C:\\Users\\User\\.gradle\\caches\\modules-2\\files-2.1\\com.fasterxml.jackson.core\\jackson-core\\2.19.0\\a90640e59ea42632a8e331ff1d6b706cf306050a\\jackson-core-2.19.0.jar;C:\\Users\\User\\.gradle\\caches\\modules-2\\files-2.1\\com.fasterxml.jackson.core\\jackson-databind\\2.19.0\\b3f7506f6414fb04760561eec11a0880165c2a4a\\jackson-databind-2.19.0.jar;C:\\Users\\User\\.gradle\\caches\\modules-2\\files-2.1\\io.qameta.allure\\allure-rest-assured\\2.29.1\\29d72efa1adaec7f56acff9375b66f33a04f5b60\\allure-rest-assured-2.29.1.jar;C:\\Users\\User\\.gradle\\caches\\modules-2\\files-2.1\\net.bytebuddy\\byte-buddy\\1.15.11\\f61886478e0f9ee4c21d09574736f0ff45e0a46c\\byte-buddy-1.15.11.jar;C:\\Users\\User\\.gradle\\caches\\modules-2\\files-2.1\\io.rest-assured\\xml-path\\5.5.1\\ddfffdf3b86b3b90c35376e0f7f4c0b777ac14b\\xml-path-5.5.1.jar;C:\\Users\\User\\.gradle\\caches\\modules-2\\files-2.1\\io.rest-assured\\json-path\\5.5.1\\244f2b4f0b33f0efe783803fa99154df40dd1550\\json-path-5.5.1.jar;C:\\Users\\User\\.gradle\\caches\\modules-2\\files-2.1\\org.apache.groovy\\groovy-json\\4.0.22\\5c8edac1ee596375a3d28fc2c0e844ee067f6b6b\\groovy-json-4.0.22.jar;C:\\Users\\User\\.gradle\\caches\\modules-2\\files-2.1\\org.apache.groovy\\groovy-xml\\4.0.22\\951b9a1f3891981aa152fd02076a8ba6c20857e7\\groovy-xml-4.0.22.jar;C:\\Users\\User\\.gradle\\caches\\modules-2\\files-2.1\\io.rest-assured\\rest-assured-common\\5.5.1\\5ad2f3a7ea7903d6ff03bcfbf8cac27bcaf266ea\\rest-assured-common-5.5.1.jar;C:\\Users\\User\\.gradle\\caches\\modules-2\\files-2.1\\org.apache.groovy\\groovy\\4.0.22\\a04df669ad2778678072315bc92f10f03362e7d7\\groovy-4.0.22.jar;C:\\Users\\User\\.gradle\\caches\\modules-2\\files-2.1\\org.apache.httpcomponents\\httpmime\\4.5.13\\efc110bad4a0d45cda7858e6beee1d8a8313da5a\\httpmime-4.5.13.jar;C:\\Users\\User\\.gradle\\caches\\modules-2\\files-2.1\\org.apache.httpcomponents\\httpclient\\4.5.13\\e5f6cae5ca7ecaac1ec2827a9e2d65ae2869cada\\httpclient-4.5.13.jar;C:\\Users\\User\\.gradle\\caches\\modules-2\\files-2.1\\org.hamcrest\\hamcrest\\2.2\\1820c0968dba3a11a1b30669bb1f01978a91dedc\\hamcrest-2.2.jar;C:\\Users\\User\\.gradle\\caches\\modules-2\\files-2.1\\org.ccil.cowan.tagsoup\\tagsoup\\1.2.1\\5584627487e984c03456266d3f8802eb85a9ce97\\tagsoup-1.2.1.jar;C:\\Users\\User\\.gradle\\caches\\modules-2\\files-2.1\\io.qameta.allure\\allure-attachments\\2.29.1\\e3403f0b8bf3ddc183c6584908671b1428839463\\allure-attachments-2.29.1.jar;C:\\Users\\User\\.gradle\\caches\\modules-2\\files-2.1\\io.qameta.allure\\allure-test-filter\\2.29.1\\80ee4d0e8a458be89feff62cc527c88301bdf6d5\\allure-test-filter-2.29.1.jar;C:\\Users\\User\\.gradle\\caches\\modules-2\\files-2.1\\io.qameta.allure\\allure-java-commons\\2.29.1\\e890caace3c0eb81bff0b4bb87f3e91071df305\\allure-java-commons-2.29.1.jar;C:\\Users\\User\\.gradle\\caches\\modules-2\\files-2.1\\org.apache.httpcomponents\\httpcore\\4.4.13\\853b96d3afbb7bf8cc303fe27ee96836a10c1834\\httpcore-4.4.13.jar;C:\\Users\\User\\.gradle\\caches\\modules-2\\files-2.1\\commons-logging\\commons-logging\\1.2\\4bfc12adfe4842bf07b657f0369c4cb522955686\\commons-logging-1.2.jar;C:\\Users\\User\\.gradle\\caches\\modules-2\\files-2.1\\commons-codec\\commons-codec\\1.11\\3acb4705652e16236558f0f4f2192cc33c3bd189\\commons-codec-1.11.jar;C:\\Users\\User\\.gradle\\caches\\modules-2\\files-2.1\\org.apache.commons\\commons-lang3\\3.16.0\\3eb54effe40946dfb06dc5cd6c7ce4116cd51ea4\\commons-lang3-3.16.0.jar;C:\\Users\\User\\.gradle\\caches\\modules-2\\files-2.1\\org.freemarker\\freemarker\\2.3.33\\fecaeb606993fc9fd0f95fe5a644048a69c39474\\freemarker-2.3.33.jar;C:\\Users\\User\\.gradle\\caches\\modules-2\\files-2.1\\org.opentest4j\\opentest4j\\1.3.0\\152ea56b3a72f655d4fd677fc0ef2596c3dd5e6e\\opentest4j-1.3.0.jar;C:\\Users\\User\\.gradle\\caches\\modules-2\\files-2.1\\org.slf4j\\slf4j-api\\2.0.13\\80229737f704b121a318bba5d5deacbcf395bc77\\slf4j-api-2.0.13.jar;C:\\Users\\User\\.gradle\\caches\\modules-2\\files-2.1\\io.qameta.allure\\allure-model\\2.29.1\\10c52451031c77eb6eaf8562a45ad3ea1b556a70\\allure-model-2.29.1.jar
+java.vm.vendor=Oracle Corporation
+sun.arch.data.model=64
+user.variant=
+java.vendor.url=https://java.oracle.com/
+user.timezone=GMT+03:00
+java.vm.specification.version=23
+os.name=Windows 7
+user.country=RU
+sun.java.launcher=SUN_STANDARD
+sun.boot.library.path=C:\Users\User\.jdks\openjdk-23.0.2\bin
+sun.java.command=worker.org.gradle.process.internal.worker.GradleWorkerMain 'Gradle Test Executor 2'
+jdk.debug=release
+allure.results.directory=C:\javaProjects\autoTests\014-015_Testing_API_Java_RestAssured\petSroreApiTestsHW\build\allure-results
+sun.cpu.endian=little
+user.home=C:\Users\User
+user.language=ru
+java.specification.vendor=Oracle Corporation
+java.version.date=2025-01-21
+java.home=C:\Users\User\.jdks\openjdk-23.0.2
+file.separator=\
+java.vm.compressedOopsMode=32-bit
+line.separator=
+
+java.vm.specification.vendor=Oracle Corporation
+java.specification.name=Java Platform API Specification
+user.script=
+sun.management.compiler=HotSpot 64-Bit Tiered Compilers
+java.runtime.version=23.0.2+7-58
+user.name=User
+stdout.encoding=Cp1251
+path.separator=;
+os.version=6.1
+java.runtime.name=OpenJDK Runtime Environment
+file.encoding=UTF-8
+java.vm.name=OpenJDK 64-Bit Server VM
+java.vendor.url.bug=https://bugreport.java.com/bugreport/
+java.io.tmpdir=C:\Users\User\AppData\Local\Temp\
+java.version=23.0.2
+user.dir=C:\javaProjects\autoTests\014-015_Testing_API_Java_RestAssured\petSroreApiTestsHW
+os.arch=amd64
+java.vm.specification.name=Java Virtual Machine Specification
+org.gradle.internal.worker.tmpdir=C:\javaProjects\autoTests\014-015_Testing_API_Java_RestAssured\petSroreApiTestsHW\build\tmp\test\work
+sun.os.patch.level=Service Pack 1
+native.encoding=Cp1251
+java.library.path=C:\Users\User\.jdks\openjdk-23.0.2\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Brackets\command;C:\Users\User\AppData\Local\Programs\Python\Python37\Scripts\;C:\Users\User\AppData\Local\Programs\Python\Python37\;C:\Program Files\JetBrains\PyCharm Community Edition 2019.3.4\bin;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2019.3.4\bin;C:\Program Files\ojdkbuild\java-11-openjdk-11.0.12-1\\bin;C:\Program Files\ojdkbuild\java-11-openjdk-11.0.12-1\missioncontrol\;C:\Program Files\ojdkbuild\java-11-openjdk-11.0.12-1\bin;C:\Program Files\Git\cmd;C:\Program Files\PuTTY\;C:\Users\User\AppData\Local\Programs\Python\Python37\Scripts\;C:\Users\User\AppData\Local\Programs\Python\Python37\;C:\allure-2.33.0\bin;C:\Program Files\JetBrains\PyCharm Community Edition 2019.3.4\bin;;C:\Program Files\ojdkbuild\java-11-openjdk-11.0.12-1\\bin;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2019.3.4\bin;;C:\adb;C:\Users\User\AppData\Local\Programs\Python\Python37\Scripts\;C:\Users\User\AppData\Local\Programs\Python\Python37\;C:\Program Files\JetBrains\PyCharm Community Edition 2019.3.4\bin;;C:\Program Files\ojdkbuild\java-11-openjdk-11.0.12-1\\bin;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2019.3.4\bin;;.
+junit.jupiter.extensions.autodetection.enabled=true
+java.vm.info=mixed mode, sharing
+stderr.encoding=Cp1251
+java.vendor=Oracle Corporation
+java.vm.version=23.0.2+7-58
+sun.io.unicode.encoding=UnicodeLittle
+java.class.version=67.0
+---- Command Line ---
+Empty
+---- Full Classpath ---
+Empty
+---- Compiler Messages ---
+Empty

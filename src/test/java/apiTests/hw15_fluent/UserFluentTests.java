@@ -56,9 +56,6 @@ class UserFluentTests extends BaseUserFluentTests {
                 .getJsonValueAndCheckIsNotNull("message");
     }
 
-    // TODO тестовые данные со всеми полями и тестовые данные с минимальным набором полей
-    // TODO блок обычных тестов и блок с ретраями
-
     @Test
     @Tag("smoke")
     @DisplayName("Check that get user by username returns ok status 200, fields are not null and username is equal")

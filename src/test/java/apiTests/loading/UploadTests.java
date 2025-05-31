@@ -22,25 +22,8 @@ class UploadTests {
         File file = new File(BEE_PATH_NAME);
         UploadImageJpegControllerFluent uploadImageController = new UploadImageJpegControllerFluent(file);
 
-        ApiHttpResponse response = uploadImageController.uploadImage(PETSTORE_UPLOADING_IMAGE_URL);
-
-        response.statusCodeIs(200);
+        ApiHttpResponse response = uploadImageController.uploadImage(PETSTORE_UPLOADING_IMAGE_URL)
+                .statusCodeIs(200);
         System.out.println(response);
-
-//        File file = new File(BEE_PATH_NAME);
-//
-//        Response response =
-//                given()
-//                        .header("accept", "application/json")
-//                        .contentType("multipart/form-data")
-//                        .multiPart("file", file, "image/jpeg")
-//                        .when()
-//                        .post(PETSTORE_UPLOADING_IMAGE_URL)
-//                        .then()
-//                        .statusCode(200)
-//                        .extract()
-//                        .response();
-//
-//        System.out.println("Response: " + response.asString());
     }
 }

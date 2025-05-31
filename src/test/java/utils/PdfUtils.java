@@ -16,7 +16,6 @@ public class PdfUtils {
         long contentLength = 0;
 
         if (response != null) {
-
             // Получаем response в форме потока ввода
             try (InputStream inputStream = response.getBody().asInputStream()) {
 
@@ -41,11 +40,9 @@ public class PdfUtils {
                 outputStream.close();
 
                 System.out.println("PDF успешно сохранен в файл: " + fileName);
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
         }
 
         System.out.println("Размер оригинального файла: " + contentLength);

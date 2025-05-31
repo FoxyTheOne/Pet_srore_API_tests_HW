@@ -16,35 +16,18 @@ import static utils.PdfUtils.savePdf;
 
 @Tags({@Tag(DOWNLOAD_TAG), @Tag(API_TAG)})
 class DownloadTests {
+    DownloadPdfController downloadPdfController = new DownloadPdfController();
+
     @Test
     @Tags({@Tag(SMOKE_TAG), @Tag(POSITIVE_TAG)})
     @DisplayName("Download pdf file from the web site and check status code")
     void smokeApiDownloadHttpClientTest() {
-        String fileName = "downloaded.pdf";
-        DownloadPdfController downloadPdfController = new DownloadPdfController();
-
         Response response = downloadPdfController.downloadPdf(ALFA_DOWNLOADING_PDF_URL);
-        ApiHttpResponse apiHttpResponse = downloadPdfController.responseToApiHttpResponse(response);
 
-        apiHttpResponse.statusCodeIs(200);
+        downloadPdfController.responseToApiHttpResponse(response)
+                .statusCodeIs(200);
 
-        savePdf(response, fileName);
-
-//        String fileName = "downloaded.pdf";
-//
-//        Response response =
-//                given().
-//                        when().
-//                        get(ALFA_DOWNLOADING_PDF_URL).
-//                        then().
-//                        contentType("application/pdf").
-//                        statusCode(200).
-//                        extract().response();
-//
-//        savePdf(response, fileName);
-//
-//        File downloadedFile = new File(fileName);
-//        assertThat(downloadedFile).exists();
+        savePdf(response, "downloaded.pdf");
     }
 
     @Test
@@ -52,19 +35,15 @@ class DownloadTests {
     @DisplayName("Download pdf file from the web site and check downloaded file")
     void extendedApiDownloadHttpClientTest() {
         String fileName = "downloaded2.pdf";
-        DownloadPdfController downloadPdfController = new DownloadPdfController();
-
         Response response = downloadPdfController.downloadPdf(ALFA_DOWNLOADING_PDF_URL);
-        ApiHttpResponse apiHttpResponse = downloadPdfController.responseToApiHttpResponse(response);
-
-
-        apiHttpResponse.statusCodeIs(200);
+        ApiHttpResponse apiHttpResponse = downloadPdfController.responseToApiHttpResponse(response)
+                .statusCodeIs(200);
 
         long contentLength = savePdf(response, fileName);
 
         File downloadedFile = new File(fileName);
         apiHttpResponse
                 .fileExists(downloadedFile)
-                .fileSizeMatches(downloadedFile, (int)contentLength);
+                .fileSizeMatches(downloadedFile, (int) contentLength);
     }
 }

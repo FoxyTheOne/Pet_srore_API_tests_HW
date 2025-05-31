@@ -18,10 +18,10 @@ public class SuperheroControllerFluent {
 
     public SuperheroControllerFluent() {
         RestAssured.defaultParser = Parser.JSON;
-        this.requestSpecification.contentType(ContentType.JSON);
-        this.requestSpecification.accept(ContentType.JSON);
-        this.requestSpecification.baseUri(BASE_URL);
-        this.requestSpecification.filter(new AllureRestAssured());
+        requestSpecification.contentType(ContentType.JSON);
+        requestSpecification.accept(ContentType.JSON);
+        requestSpecification.baseUri(BASE_URL);
+        requestSpecification.filter(new AllureRestAssured());
     }
 
     // CREATE - post

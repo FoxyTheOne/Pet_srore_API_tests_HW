@@ -1,4 +1,4 @@
-package models.hw15_fluent;
+package models;
 
 import io.qameta.allure.Step;
 import io.restassured.response.ValidatableResponse;
@@ -20,9 +20,10 @@ public class ApiHttpResponse {
 
     @Step("Check json value by path '{fieldPath}' and expected value '{expectedFieldValue}'")
     public ApiHttpResponse jsonValueIs(String fieldPath, Object expectedFieldValue) {
-        Object actualValue = null;
+        Object actualValue;
 
         if (expectedFieldValue != null) {
+
             if (expectedFieldValue instanceof Long) {
                 actualValue = this.response.extract().jsonPath().getLong(fieldPath);
             } else if (expectedFieldValue instanceof Integer) {
@@ -30,6 +31,7 @@ public class ApiHttpResponse {
             } else {
                 actualValue = this.response.extract().jsonPath().getString(fieldPath);
             }
+
         } else {
             actualValue = this.response.extract().jsonPath().getString(fieldPath);
         }
@@ -43,46 +45,6 @@ public class ApiHttpResponse {
         assertThat(actualValue).as(messageIfFailed).isEqualTo(expectedFieldValue);
         return this;
     }
-
-
-//    @Step("Check json value by path '{fieldPath}' and expected value '{expectedFieldValue}'")
-//    public ApiHttpResponse jsonStringValueIs(String fieldPath, String expectedFieldValue) {
-//        String actualValue = this.response.extract().jsonPath().getString(fieldPath);
-//        String messageIfFailed = String.format("Actual value '%s' is not equals to expected '%s' for the path '%s' and response: \n%s",
-//                actualValue,
-//                expectedFieldValue,
-//                fieldPath,
-//                this.response.extract().response().andReturn().asPrettyString());
-//
-//        assertThat(actualValue).as(messageIfFailed).isEqualTo(expectedFieldValue);
-//        return this;
-//    }
-//
-//    @Step("Check json value by path '{fieldPath}' and expected value '{expectedFieldValue}'")
-//    public ApiHttpResponse jsonLongValueIs(String fieldPath, long expectedFieldValue) {
-//        long actualValue = this.response.extract().jsonPath().getLong(fieldPath);
-//        String messageIfFailed = String.format("Actual value '%s' is not equals to expected '%s' for the path '%s' and response: \n%s",
-//                actualValue,
-//                expectedFieldValue,
-//                fieldPath,
-//                this.response.extract().response().andReturn().asPrettyString());
-//
-//        assertThat(actualValue).as(messageIfFailed).isEqualTo(expectedFieldValue);
-//        return this;
-//    }
-//
-//    @Step("Check json value by path '{fieldPath}' and expected value '{expectedFieldValue}'")
-//    public ApiHttpResponse jsonIntValueIs(String fieldPath, int expectedFieldValue) {
-//        long actualValue = this.response.extract().jsonPath().getInt(fieldPath);
-//        String messageIfFailed = String.format("Actual value '%s' is not equals to expected '%s' for the path '%s' and response: \n%s",
-//                actualValue,
-//                expectedFieldValue,
-//                fieldPath,
-//                this.response.extract().response().andReturn().asPrettyString());
-//
-//        assertThat(actualValue).as(messageIfFailed).isEqualTo(expectedFieldValue);
-//        return this;
-//    }
 
     @Step("Check json value is not null")
     public ApiHttpResponse jsonValueIsNotNull(String fieldPath) {
@@ -115,6 +77,8 @@ public class ApiHttpResponse {
     @Override
     @Step("Return info about response")
     public String toString() {
-        return String.format("Status code: %s and response: \n%s", response.extract().response().statusCode(), response.extract().response().asPrettyString());
+        return String.format("Status code: %s and response: \n%s",
+                response.extract().response().statusCode(),
+                response.extract().response().asPrettyString());
     }
 }

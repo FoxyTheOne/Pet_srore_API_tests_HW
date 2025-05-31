@@ -4,8 +4,8 @@ import io.qameta.allure.Step;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import models.hw15_fluent.ApiHttpResponse;
-import models.hw15_fluent.UserWithBuilder;
+import models.ApiHttpResponse;
+import models.UserWithBuilder;
 
 import static constants.PetStoreConstants.BASE_URL;
 import static io.restassured.RestAssured.given;

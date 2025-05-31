@@ -1,4 +1,4 @@
-package apiTests.hw15_fluent;
+package apiTests.userFluent;
 
 import controller.UserControllerFluent;
 import org.junit.jupiter.api.AfterEach;

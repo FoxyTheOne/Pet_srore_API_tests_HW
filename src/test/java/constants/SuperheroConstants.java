@@ -1,7 +1,7 @@
 package constants;
 
-import models.hw15_fluent.Gender;
-import models.hw15_fluent.SuperheroWithBuilder;
+import models.Gender;
+import models.SuperheroWithBuilder;
 
 public class SuperheroConstants {
     public static final String BASE_URL = "https://superhero.qa-test.csssr.com/";

@@ -1,6 +1,6 @@
 package apiTests.hw14;
 
-import controller.UserController;
+import controller.hw14.UserController;
 import io.restassured.response.Response;
 import models.hw14.User;
 import models.hw14.UserApiResponse;

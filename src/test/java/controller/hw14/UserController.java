@@ -1,4 +1,4 @@
-package controller;
+package controller.hw14;
 
 import io.qameta.allure.Step;
 import io.qameta.allure.restassured.AllureRestAssured;

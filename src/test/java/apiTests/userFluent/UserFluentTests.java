@@ -1,6 +1,6 @@
-package apiTests.hw15_fluent;
+package apiTests.userFluent;
 
-import models.hw15_fluent.ApiHttpResponse;
+import models.ApiHttpResponse;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;

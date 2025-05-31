@@ -7,7 +7,7 @@ Dump on exception: true
 Dump at exit condition: abort
 ---- Exception Information ---
 org.aspectj.weaver.BCException: Error processing class file
-when weaving type models.hw15_fluent.ApiHttpResponse
+when weaving type models.ApiHttpResponse
 when weaving classes 
 when weaving 
 

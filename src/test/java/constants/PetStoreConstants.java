@@ -1,7 +1,7 @@
 package constants;
 
 import models.hw14.User;
-import models.hw15_fluent.UserWithBuilder;
+import models.UserWithBuilder;
 
 public class PetStoreConstants {
     public static final String BASE_URL = "https://petstore.swagger.io";

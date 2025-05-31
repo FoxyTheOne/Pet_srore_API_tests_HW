@@ -77,9 +77,10 @@ class SuperheroExtendedPositiveTests extends BaseSuperheroFluentTests {
                 .jsonValueIs("phone", DEFAULT_SUPERMAN_SUPERHERO.getPhone());
     }
 
-    // DELETE
+    // UNSTABLE_TAG: Удаление не всегда удаляет, даже если получен ответ от сервера 200.
+    // После успешного удаления запрос get может вернуть только что удалённый объект (Expected status code <400> but was <200>)
     @Test
-    @Tag(DELETE_TAG)
+    @Tags({@Tag(DELETE_TAG), @Tag(UNSTABLE_TAG)})
     @DisplayName("Delete superhero")
     void deleteSuperheroByIdTest() throws InterruptedException {
         int id = Integer.parseInt(superheroControllerFluent.createSuperhero(DEFAULT_SUPERMAN_SUPERHERO)
